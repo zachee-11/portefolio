@@ -1,8 +1,18 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { FileText, Target, UserRound, Lightbulb } from "lucide-react";
 import { saeProjects } from "@/data/sae";
+import Image from "next/image";
+import Link from "next/link";
+import {
+  Eye,
+  ExternalLink,
+  FileText,
+  Target,
+  UserRound,
+  Lightbulb,
+  ImageIcon,
+} from "lucide-react";
 
 export default function Portfolio() {
   return (
@@ -13,7 +23,7 @@ export default function Portfolio() {
         className="absolute -left-24 top-20 h-72 w-72 rounded-full bg-[#2E4057]/10 blur-3xl"
       />
 
-      <div className="relative mx-auto max-w-7xl px-6 md:px-10 lg:px-16">
+      <div className="relative mx-auto max-w-7xl px-5 sm:px-6 md:px-10 lg:px-16">
         <div className="mb-12">
           <p className="mb-3 text-sm font-semibold uppercase tracking-[4px] text-[#C7A17A]">
             Portfolio
@@ -39,7 +49,7 @@ export default function Portfolio() {
                   ease: "easeInOut",
                 },
               }}
-              className="rounded-[2rem] border border-black/5 bg-[#F7F3EE] p-7 shadow-sm md:p-8"
+              className="rounded-[2rem] border border-black/5 bg-[#F7F3EE] p-5 shadow-sm sm:p-7 md:p-8"
             >
               <div className="mb-8 flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
                 <div>
@@ -47,7 +57,7 @@ export default function Portfolio() {
                     {project.level}
                   </span>
 
-                  <h3 className="mt-5 text-3xl font-bold text-[#2E4057]">
+                  <h3 className="mt-5 text-2xl font-bold text-[#2E4057] md:text-3xl">
                     {project.title}
                   </h3>
                 </div>
@@ -58,14 +68,14 @@ export default function Portfolio() {
               </div>
 
               <div className="grid gap-4 md:gap-5 lg:grid-cols-2">
-                <div className="rounded-2xl bg-white p-6">
+                <div className="rounded-2xl bg-white p-5 md:p-6">
                   <p className="mb-3 text-sm font-bold uppercase tracking-[2px] text-[#C7A17A]">
                     Contexte
                   </p>
                   <p className="leading-7 text-slate-600">{project.context}</p>
                 </div>
 
-                <div className="rounded-2xl bg-white p-6">
+                <div className="rounded-2xl bg-white p-5 md:p-6">
                   <div className="mb-3 flex items-center gap-2 text-[#C7A17A]">
                     <Target size={18} />
                     <p className="text-sm font-bold uppercase tracking-[2px]">
@@ -80,7 +90,7 @@ export default function Portfolio() {
                   </ul>
                 </div>
 
-                <div className="rounded-2xl bg-white p-6">
+                <div className="rounded-2xl bg-white p-5 md:p-6">
                   <div className="mb-3 flex items-center gap-2 text-[#C7A17A]">
                     <UserRound size={18} />
                     <p className="text-sm font-bold uppercase tracking-[2px]">
@@ -90,7 +100,7 @@ export default function Portfolio() {
                   <p className="leading-7 text-slate-600">{project.role}</p>
                 </div>
 
-                <div className="rounded-2xl bg-white p-6">
+                <div className="rounded-2xl bg-white p-5 md:p-6">
                   <div className="mb-3 flex items-center gap-2 text-[#C7A17A]">
                     <Lightbulb size={18} />
                     <p className="text-sm font-bold uppercase tracking-[2px]">
@@ -112,6 +122,50 @@ export default function Portfolio() {
                     {skill}
                   </span>
                 ))}
+              </div>
+
+              <div className="mt-8 border-t border-black/10 pt-6">
+                {project.proof ? (
+                  <div className="space-y-4">
+                    <div className="flex items-center gap-2 text-sm font-semibold text-[#2E4057]">
+                      <ImageIcon size={17} className="text-[#C7A17A]" />
+                      Preuve associée
+                    </div>
+
+                    {project.proof.type === "image" && (
+                      <Link
+                        href={project.proof.href}
+                        target="_blank"
+                        className="block overflow-hidden rounded-2xl border border-black/5 bg-white"
+                      >
+                        <Image
+                          src={project.proof.href}
+                          alt={`Preuve ${project.title}`}
+                          width={1200}
+                          height={800}
+                          className="max-h-72 w-full object-cover transition duration-500 hover:scale-105"
+                        />
+                      </Link>
+                    )}
+
+                    <Link
+                      href={project.proof.href}
+                      target="_blank"
+                      className="group inline-flex items-center gap-2 rounded-full bg-[#2E4057] px-5 py-3 text-sm font-semibold text-white transition hover:-translate-y-1 hover:bg-[#1f3045]"
+                    >
+                      <Eye size={16} />
+                      {project.proof.label}
+                      <ExternalLink
+                        size={14}
+                        className="transition group-hover:translate-x-1"
+                      />
+                    </Link>
+                  </div>
+                ) : (
+                  <p className="text-sm font-medium text-slate-400">
+                    Aucune preuve disponible pour cette SAE.
+                  </p>
+                )}
               </div>
             </motion.article>
           ))}
