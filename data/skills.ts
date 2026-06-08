@@ -19,4 +19,7 @@ export const skills = [
     description:
       "Contribuer au recrutement, à la formation, à l’intégration et à la fidélisation des collaborateurs.",
   },
+
+  {title : "Décider", 
+  description : "Prendre des décisions éclairées en s’appuyant sur une analyse rigoureuse et une compréhension approfondie des enjeux."},
 ];

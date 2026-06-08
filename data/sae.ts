@@ -1,4 +1,19 @@
-export const saeProjects = [
+export type SaeProject = {
+  title: string;
+  level: string;
+  context: string;
+  objectives: string[];
+  role: string;
+  reflection: string;
+  skills: string[];
+  proof?: {
+    label: string;
+    href: string;
+    type: "image" | "pdf";
+  };
+};
+
+export const saeProjects: SaeProject[] = [
   {
     title: "Posture professionnelle",
     level: "BUT 1",
@@ -13,7 +28,12 @@ export const saeProjects = [
       "Rédaction du script, organisation des idées, préparation de la prise de parole et gestion du temps.",
     reflection:
       "Cette SAE m’a permis de mieux comprendre l’importance de la communication professionnelle et de la capacité à se présenter clairement.",
-    skills: ["Communication", "Organisation", "Prise de recul"],
+    skills: [
+      "Communication",
+      "Gestion du temps",
+      "Organisation",
+      "Prise de recul",
+    ],
   },
   {
     title: "Outils RH",
@@ -29,7 +49,18 @@ export const saeProjects = [
       "Analyse des données RH, réflexion sur les besoins en compétences et participation aux recommandations.",
     reflection:
       "Cette SAE m’a appris à relier les problématiques RH à la performance globale d’une organisation.",
-    skills: ["Diagnostic RH", "Recrutement", "Formation"],
+    skills: [
+      "Diagnostic RH",
+      "Analyse des besoins en compétences",
+      "Solutions RH",
+      "Vision stratégique",
+      "Analyse des effectifs",
+    ],
+    proof: {
+      label: "Visualiser la preuve",
+      href: "/docs/preuve-sae2.jpg",
+      type: "image",
+    },
   },
   {
     title: "Audit RH & QVCT",
@@ -45,6 +76,19 @@ export const saeProjects = [
       "Recherche, analyse, rédaction, participation aux solutions RH et préparation de la présentation orale.",
     reflection:
       "Cette SAE a renforcé ma posture de consultante RH en articulant diagnostic, analyse stratégique et plan d’action.",
-    skills: ["QVCT", "Pilotage RH", "Plan d’action"],
+    skills: [
+      "QVCT",
+      "Pilotage RH",
+      "Plan d’action",
+      "Développement RH",
+      "Stratégie RH",
+      "Amélioration continue",
+      "Gestion des compétences",
+    ],
+    proof: {
+      label: "Visualiser le rapport",
+      href: "/docs/preuve-sae3.pdf",
+      type: "pdf",
+    },
   },
 ];
